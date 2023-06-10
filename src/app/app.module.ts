@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { ListStudentsComponent } from './list-students/list-students.component';
 import { ListTeachersComponent } from './list-teachers/list-teachers.component';
 import { ListSubjectsComponent } from './list-subjects/list-subjects.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ListSubjectsComponent } from './list-subjects/list-subjects.component';
     ListStudentsComponent,
     ListTeachersComponent,
     ListSubjectsComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
