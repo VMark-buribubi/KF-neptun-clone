@@ -11,6 +11,9 @@ import { UpdateStudentComponent } from './update-student/update-student.componen
 import { UpdateTeacherComponent } from './update-teacher/update-teacher.component';
 import { UpdateSubjectComponent } from './update-subject/update-subject.component';
 import { ApiService } from './api.service';
+import { CreateStudentComponent } from './create-student/create-student.component';
+import { CreateSubjectComponent } from './create-subject/create-subject.component';
+import { CreateTeacherComponent } from './create-teacher/create-teacher.component';
 
 
 const routes: Routes = [
@@ -22,9 +25,9 @@ const routes: Routes = [
   { path: 'list-teachers', component: ListTeachersComponent },
   { path: 'list-subjects', component: ListSubjectsComponent },
 
-  { path: 'create-student', component: ListTeachersComponent, canActivate: [ApiService]},
-  { path: 'create-subject', component: ListTeachersComponent, canActivate: [ApiService]},
-  { path: 'create-teacher', component: ListTeachersComponent, canActivate: [ApiService]},
+  { path: 'create-student', component: CreateStudentComponent, canActivate: [ApiService]},
+  { path: 'create-subject', component: CreateSubjectComponent, canActivate: [ApiService]},
+  { path: 'create-teacher', component: CreateTeacherComponent, canActivate: [ApiService]},
 
   { path: 'update-student/:id', component: UpdateStudentComponent, canActivate: [ApiService]},
   { path: 'update-teacher/:id', component: UpdateTeacherComponent, canActivate: [ApiService]},

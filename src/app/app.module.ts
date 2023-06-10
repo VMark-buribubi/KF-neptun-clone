@@ -36,6 +36,9 @@ import { LogoutComponent } from './logout/logout.component';
 import { UpdateStudentComponent } from './update-student/update-student.component';
 import { UpdateSubjectComponent } from './update-subject/update-subject.component';
 import { UpdateTeacherComponent } from './update-teacher/update-teacher.component';
+import { CreateStudentComponent } from './create-student/create-student.component';
+import { CreateSubjectComponent } from './create-subject/create-subject.component';
+import { CreateTeacherComponent } from './create-teacher/create-teacher.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +55,9 @@ import { UpdateTeacherComponent } from './update-teacher/update-teacher.componen
     UpdateStudentComponent,
     UpdateSubjectComponent,
     UpdateTeacherComponent,
+    CreateStudentComponent,
+    CreateSubjectComponent,
+    CreateTeacherComponent,
   ],
   imports: [
     BrowserModule,
