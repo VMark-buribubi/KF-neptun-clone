@@ -30,6 +30,7 @@ export class ListSubjectsComponent implements OnInit {
         s.exam = x.exam
         s.image = x.image
         s.creatorName = x.creatorName
+        s.createTeachers(x.subjectTeachedBy)
         this.subjects.push(s)
       })
       console.log(this.subjects)

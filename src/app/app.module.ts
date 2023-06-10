@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 //MATERIALS
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -36,7 +37,7 @@ import { ListSubjectsComponent } from './list-subjects/list-subjects.component';
     LoginComponent,
     ListStudentsComponent,
     ListTeachersComponent,
-    ListSubjectsComponent
+    ListSubjectsComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +52,7 @@ import { ListSubjectsComponent } from './list-subjects/list-subjects.component';
     MatSnackBarModule,
     MatCheckboxModule,
     MatSelectModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
