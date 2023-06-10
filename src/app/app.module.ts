@@ -39,6 +39,8 @@ import { UpdateTeacherComponent } from './update-teacher/update-teacher.componen
 import { CreateStudentComponent } from './create-student/create-student.component';
 import { CreateSubjectComponent } from './create-subject/create-subject.component';
 import { CreateTeacherComponent } from './create-teacher/create-teacher.component';
+import { ConnectStudentToSubjectComponent } from './connect-student-to-subject/connect-student-to-subject.component';
+import { ConnectSubjectToTeacherComponent } from './connect-subject-to-teacher/connect-subject-to-teacher.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { CreateTeacherComponent } from './create-teacher/create-teacher.componen
     CreateStudentComponent,
     CreateSubjectComponent,
     CreateTeacherComponent,
+    ConnectStudentToSubjectComponent,
+    ConnectSubjectToTeacherComponent,
   ],
   imports: [
     BrowserModule,
