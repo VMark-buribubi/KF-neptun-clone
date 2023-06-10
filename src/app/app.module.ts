@@ -20,13 +20,23 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FooterComponent } from './footer/footer.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { ListStudentsComponent } from './list-students/list-students.component';
+import { ListTeachersComponent } from './list-teachers/list-teachers.component';
+import { ListSubjectsComponent } from './list-subjects/list-subjects.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavigationComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
+    LoginComponent,
+    ListStudentsComponent,
+    ListTeachersComponent,
+    ListSubjectsComponent
   ],
   imports: [
     BrowserModule,
