@@ -23,6 +23,18 @@
         </p>
         <p>Credit: {{ subject.credit }}</p>
         <mat-divider></mat-divider>
+        <div *ngIf="subject.subjectTeachedBy.length > 0; else noElementsToDisplay">
+            <button
+                mat-stroked-button
+                *ngFor="let teacher of subject.subjectTeachedBy"
+            >
+                {{ teacher.name }} - {{ teacher.neptun }} - ({{ teacher.neptun }})
+            </button>
+        </div>
+        <ng-template #noElementsToDisplay>
+            Noone teaches this subject.
+        </ng-template>
+        <mat-divider></mat-divider>
         <p class="subject-id">{{ subject.id }}</p>
         <mat-divider></mat-divider>
         <button
