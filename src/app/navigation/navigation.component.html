@@ -15,7 +15,8 @@
         <button mat-menu-item routerLink="/create-teacher" *ngIf="this.api.isLoggedIn()">Create teacher</button>
         <button mat-menu-item routerLink="/create-subject" *ngIf="this.api.isLoggedIn()">Create subject</button>
         <button mat-menu-item routerLink="/create-student" *ngIf="this.api.isLoggedIn()">Create student</button>
-        <button mat-menu-item routerLink="/connect" *ngIf="this.api.isLoggedIn()">Connect teacher to subject</button>
+        <button mat-menu-item routerLink="/connect-student-to-subject" *ngIf="this.api.isLoggedIn()">Connect student to subject</button>
+        <button mat-menu-item routerLink="/connect-subject-to-student" *ngIf="this.api.isLoggedIn()">Connect subject to student</button>
     </mat-menu>
     
     <button
