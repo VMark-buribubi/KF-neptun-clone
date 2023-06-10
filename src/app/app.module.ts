@@ -27,6 +27,9 @@ import { ListStudentsComponent } from './list-students/list-students.component';
 import { ListTeachersComponent } from './list-teachers/list-teachers.component';
 import { ListSubjectsComponent } from './list-subjects/list-subjects.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UpdateStudentComponent } from './update-student/update-student.component';
+import { UpdateSubjectComponent } from './update-subject/update-subject.component';
+import { UpdateTeacherComponent } from './update-teacher/update-teacher.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { LogoutComponent } from './logout/logout.component';
     ListTeachersComponent,
     ListSubjectsComponent,
     LogoutComponent,
+    UpdateStudentComponent,
+    UpdateSubjectComponent,
+    UpdateTeacherComponent,
   ],
   imports: [
     BrowserModule,
