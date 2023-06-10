@@ -1,1 +1,46 @@
-<p>navigation works!</p>
+<nav>
+    <button mat-raised-button color="primary" routerLink="/home">
+        <mat-icon aria-hidden="false" aria-label="Home icon" fontIcon="home"></mat-icon>
+        Home
+    </button>
+    
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">
+        <mat-icon aria-hidden="false" aria-label="Home icon" fontIcon="list"></mat-icon>
+        Functions
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/list-teachers">List Teachers</button>
+        <button mat-menu-item routerLink="/list-subjects">List Subjects</button>
+        <button mat-menu-item routerLink="/list-students">List Student</button>
+        <button mat-menu-item routerLink="/create-subject" >Create subject</button>
+        <button mat-menu-item routerLink="/create-teacher" >Create teacher</button>
+        <button mat-menu-item routerLink="/create-student" >Create student</button>
+        <button mat-menu-item routerLink="/connect">Connect teacher to subject</button>
+    </mat-menu>
+    
+    <button
+        mat-raised-button color="primary"
+        routerLink="/register"
+    >
+    <mat-icon aria-hidden="false" aria-label="" fontIcon="account_circle"></mat-icon>
+        Register
+    </button>
+
+    <button
+        mat-raised-button
+        color="warn"
+        routerLink="/login"
+    >
+        <mat-icon aria-hidden="false" aria-label="" fontIcon="vpn_key"></mat-icon>
+        Login
+    </button>
+
+    <button
+        mat-raised-button
+        color="warn"
+        routerLink="/logout"
+    >
+        <mat-icon aria-hidden="false" aria-label="" fontIcon="login"></mat-icon>
+        Logout
+    </button>
+</nav>

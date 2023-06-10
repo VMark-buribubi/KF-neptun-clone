@@ -1,0 +1,38 @@
+<h1>Subjects</h1>
+
+<mat-card class="example-card" *ngFor="let student of students">
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title>{{ student.name }}</mat-card-title>
+            <mat-card-subtitle>{{ student.neptun }}</mat-card-subtitle>
+            <img mat-card-sm-image [src]="student.image">
+        </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Sum Credit: {{ student.sumcredit }}</p>
+        <mat-divider></mat-divider>
+        <div *ngIf="student.studiedSubjects.length > 0; else noElementsToDisplay">
+            <button
+                mat-stroked-button
+                *ngFor="let subject of student.studiedSubjects"
+            >
+                {{ subject.name }} - {{ subject.neptun }} - ({{ subject.neptun }})
+            </button>
+        </div>
+        <ng-template #noElementsToDisplay>
+            There are no studied subjects.
+        </ng-template>
+        <mat-divider></mat-divider>
+        <p class="subject-id">{{ student.id }}</p>
+        <mat-divider></mat-divider>
+        <button
+            mat-stroked-button
+            [routerLink]="['/update-subject/', student.id]"
+        >
+            <mat-icon aria-hidden="false" aria-label="Edit icon" fontIcon="edit"></mat-icon>
+            Edit
+        </button>
+    </mat-card-content>
+</mat-card>
+
+<div id="clear"></div>
