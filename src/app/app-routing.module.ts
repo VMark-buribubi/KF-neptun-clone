@@ -6,6 +6,10 @@ import { RegisterComponent } from './register/register.component';
 import { ListStudentsComponent } from './list-students/list-students.component';
 import { ListTeachersComponent } from './list-teachers/list-teachers.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UpdateStudentComponent } from './update-student/update-student.component';
+import { UpdateTeacherComponent } from './update-teacher/update-teacher.component';
+import { UpdateSubjectComponent } from './update-subject/update-subject.component';
+import { ApiService } from './api.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,6 +19,15 @@ const routes: Routes = [
   { path: 'list-students', component: ListStudentsComponent },
   { path: 'list-teachers', component: ListTeachersComponent },
   { path: 'list-subjects', component: ListTeachersComponent },
+
+  { path: 'create-student', component: ListTeachersComponent, canActivate: [ApiService]},
+  { path: 'create-subject', component: ListTeachersComponent, canActivate: [ApiService]},
+  { path: 'create-teacher', component: ListTeachersComponent, canActivate: [ApiService]},
+
+  { path: 'update-student/:id', component: UpdateStudentComponent, canActivate: [ApiService]},
+  { path: 'update-teacher/:id', component: UpdateTeacherComponent, canActivate: [ApiService]},
+  { path: 'update-subject/:id', component: UpdateSubjectComponent, canActivate: [ApiService]},
+
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
