@@ -5,10 +5,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ListStudentsComponent } from './list-students/list-students.component';
 import { ListTeachersComponent } from './list-teachers/list-teachers.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'list-students', component: ListStudentsComponent },
   { path: 'list-teachers', component: ListTeachersComponent },
