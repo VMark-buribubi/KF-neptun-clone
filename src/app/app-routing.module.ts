@@ -31,8 +31,8 @@ const routes: Routes = [
   { path: 'create-subject', component: CreateSubjectComponent, canActivate: [ApiService]},
   { path: 'create-teacher', component: CreateTeacherComponent, canActivate: [ApiService]},
 
-  { path: 'connect-student-to-subject', component: ConnectStudentToSubjectComponent, canActivate: [ApiService]},
-  { path: 'connect-subject-to-teacher', component: ConnectSubjectToTeacherComponent, canActivate: [ApiService]},
+  { path: 'connect-student-to-subject', component: ConnectStudentToSubjectComponent, },
+  { path: 'connect-subject-to-teacher', component: ConnectSubjectToTeacherComponent, },
 
   { path: 'update-student/:id', component: UpdateStudentComponent, canActivate: [ApiService]},
   { path: 'update-teacher/:id', component: UpdateTeacherComponent, canActivate: [ApiService]},
