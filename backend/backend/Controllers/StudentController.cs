@@ -32,9 +32,10 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public void AddStudent([FromBody] Student s)
+        public IActionResult AddStudent([FromBody] Student s)
         {
             dbContext.Add(s);
+            return Ok(s);
         }
 
         [HttpPut]

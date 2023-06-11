@@ -29,9 +29,10 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public void AddTeacher([FromBody] Teacher s)
+        public IActionResult AddTeacher([FromBody] Teacher s)
         {
             dbContext.Add(s);
+            return Ok(s);
         }
 
         [HttpPut]

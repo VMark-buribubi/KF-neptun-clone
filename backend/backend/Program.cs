@@ -1,12 +1,17 @@
 using backend.Data;
 using backend.Models;
 using Microsoft.AspNetCore.Identity;
+using backend.Filters;
 using Microsoft.EntityFrameworkCore;
+using static backend.Filters.ApiExceptionFIlter;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(opt =>
+{
+    opt.Filters.Add<ApiExceptionFilter>();
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DatabaseContext>(opt =>
