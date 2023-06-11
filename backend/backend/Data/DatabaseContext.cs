@@ -1,10 +1,12 @@
 ﻿using backend.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace backend.Data
 {
-    public class DatabaseContext : Microsoft.EntityFrameworkCore.DbContext
+    public class DatabaseContext : IdentityDbContext<User>
     {
         public DbSet<Student> Students { get; set; }
         public DbSet<Subject> Subjects { get; set; }
@@ -23,6 +25,24 @@ namespace backend.Data
                 .HasMany(s => s.Subjects)
                 .WithMany(p => p.Teachers);
 
+            modelBuilder.Entity<IdentityRole>().HasData(
+              new { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
+              new { Id = "2", Name = "Customer", NormalizedName = "CUSTOMER" }
+            );
+
+            PasswordHasher<User> ph = new PasswordHasher<User>();
+            User kovi = new User
+            {
+                Email = "kovi91@gmail.com",
+                EmailConfirmed = true,
+                UserName = "kovi91@gmail.com",
+                FirstName = "Kovács",
+                LastName = "András",
+                NormalizedUserName = "KOVI91@GMAIL.COM"
+            };
+            kovi.PasswordHash = ph.HashPassword(kovi, "almafa123");
+            modelBuilder.Entity<User>().HasData(kovi);
+
             // Add test data for Students
             modelBuilder.Entity<Student>().HasData(
                 new Student { Id = Guid.NewGuid(), Name = "John Doe", Neptun = "ABC123", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg" },
@@ -40,6 +60,8 @@ namespace backend.Data
                 new Teacher { Id = Guid.NewGuid(), Name = "Professor X", Neptun = "PROF01", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg" },
                 new Teacher { Id = Guid.NewGuid(), Name = "Dr. Watson", Neptun = "DRWAT02", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg" }
             );
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
