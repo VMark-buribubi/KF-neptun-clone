@@ -6,11 +6,12 @@ using System;
 
 namespace backend.Data
 {
-    public class DatabaseContext : IdentityDbContext<User>
+    public class DatabaseContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Student> Students { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
         public DatabaseContext(DbContextOptions<DatabaseContext> opt) : base(opt)
         {
 
@@ -30,9 +31,10 @@ namespace backend.Data
               new { Id = "2", Name = "Customer", NormalizedName = "CUSTOMER" }
             );
 
-            PasswordHasher<User> ph = new PasswordHasher<User>();
-            User kovi = new User
+            PasswordHasher<AppUser> ph = new PasswordHasher<AppUser>();
+            AppUser kovi = new AppUser
             {
+                Id = Guid.NewGuid().ToString(),
                 Email = "kovi91@gmail.com",
                 EmailConfirmed = true,
                 UserName = "kovi91@gmail.com",
@@ -41,7 +43,7 @@ namespace backend.Data
                 NormalizedUserName = "KOVI91@GMAIL.COM"
             };
             kovi.PasswordHash = ph.HashPassword(kovi, "almafa123");
-            modelBuilder.Entity<User>().HasData(kovi);
+            modelBuilder.Entity<AppUser>().HasData(kovi);
 
             // Add test data for Students
             modelBuilder.Entity<Student>().HasData(
