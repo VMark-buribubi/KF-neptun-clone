@@ -16,6 +16,5 @@ namespace backend.Models
         public IdentityUser? CreatorName { get; set; }
         public virtual ICollection<Subject>? Subjects { get; set; }
 
-
     }
 }

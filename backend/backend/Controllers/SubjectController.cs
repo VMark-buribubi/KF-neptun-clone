@@ -29,9 +29,10 @@ namespace backend.Controllers
         }
 
         [HttpPost]
-        public void AddSubject([FromBody] Subject s)
+        public IActionResult AddSubject([FromBody] Subject s)
         {
             dbContext.Add(s);
+            return Ok(s);
         }
 
         [HttpPut]
