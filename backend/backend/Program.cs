@@ -23,12 +23,6 @@ builder.Services.AddControllers(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.Configure<SwaggerGenOptions>(options =>
-//{
-//    options.SwaggerGeneratorOptions.SerializerOptions.IgnoreNullValues = true;
-//    options.SwaggerGeneratorOptions.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-//});
-
 builder.Services.AddDbContext<DatabaseContext>(opt =>
 {
     opt.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SchoolDb;Trusted_Connection=True;MultipleActiveResultSets=true");

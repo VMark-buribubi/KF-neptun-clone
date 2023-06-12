@@ -1,5 +1,6 @@
 ﻿using backend.Data;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,7 @@ namespace backend.Controllers
             return dbContext.Teachers.FirstOrDefault(x => x.Id == id);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddTeacher([FromBody] Teacher s)
         {
@@ -40,6 +42,7 @@ namespace backend.Controllers
             return Ok(s);
         }
 
+        [Authorize]
         [HttpPut]
         public void EditTeacher([FromBody] Teacher s)
         {
@@ -50,6 +53,7 @@ namespace backend.Controllers
             dbContext.SaveChanges();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public void DeteleTeacher(Guid id)
         {

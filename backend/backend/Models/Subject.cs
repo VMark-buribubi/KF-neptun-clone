@@ -17,9 +17,6 @@ namespace backend.Models
         public int? Credit { get; set; }
         public bool? Exam { get; set; }
         public string? Image { get; set; }
-        [Newtonsoft.Json.JsonIgnore]
-        [System.Text.Json.Serialization.JsonIgnore]
-        public IdentityUser? CreatorName { get; set; }
 
         [Newtonsoft.Json.JsonIgnore]
         [System.Text.Json.Serialization.JsonIgnore]

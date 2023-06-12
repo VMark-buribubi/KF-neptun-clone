@@ -1,5 +1,6 @@
 ﻿using backend.Data;
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,7 @@ namespace backend.Controllers
             return dbContext.Subjects.FirstOrDefault(x => x.Id == id);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddSubject([FromBody] Subject s)
         {
@@ -40,6 +42,7 @@ namespace backend.Controllers
             return Ok(s);
         }
 
+        [Authorize]
         [HttpPut]
         public void EditSubject([FromBody] Subject s)
         {
@@ -52,6 +55,7 @@ namespace backend.Controllers
             dbContext.SaveChanges();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public void DeteleSubject(Guid id)
         {

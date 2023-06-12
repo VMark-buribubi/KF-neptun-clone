@@ -18,10 +18,6 @@ namespace backend.Models
 
         [Newtonsoft.Json.JsonIgnore]
         [System.Text.Json.Serialization.JsonIgnore]
-        public IdentityUser? CreatorName { get; set; }
-
-        [Newtonsoft.Json.JsonIgnore]
-        [System.Text.Json.Serialization.JsonIgnore]
         public virtual Subject? Subject { get; set; }
         public Guid SubjectId { get; set; }
     }
