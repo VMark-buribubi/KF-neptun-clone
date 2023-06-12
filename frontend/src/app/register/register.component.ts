@@ -36,7 +36,7 @@ export class RegisterComponent {
   }
 
   public sendRegisterCredentials() : void {
-    this.http.put("backend-url", this.registerModel)
+    this.http.post("http://localhost:7115/Auth/register", this.registerModel)
     .subscribe(
       (success) => {
         this.snackBar

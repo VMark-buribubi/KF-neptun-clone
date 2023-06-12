@@ -26,7 +26,7 @@ export class CreateTeacherComponent {
     })
     this.http
       .post(
-        'backend-url',
+        'http://localhost:7115/Teacher',
         this.teacher,
         { headers: headers }
       )

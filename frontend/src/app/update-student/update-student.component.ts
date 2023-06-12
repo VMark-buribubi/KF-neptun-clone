@@ -28,7 +28,7 @@ export class UpdateStudentComponent implements OnInit{
     this.route.params.subscribe(param => {
       let studentID = param['id']
       this.http
-      .get<any>('backend-url')
+      .get<any>('http://localhost:7115/Student')
       .subscribe(resp => {
         resp.filter((x:any) => x.id === studentID)
         .map((x:any) => {
@@ -52,7 +52,7 @@ export class UpdateStudentComponent implements OnInit{
     })
     this.http
       .put(
-        'backend-url',
+        'http://localhost:7115/Student',
         this.student,
         { headers: headers }
       )
@@ -76,7 +76,7 @@ export class UpdateStudentComponent implements OnInit{
     })
     this.http
       .delete(
-        'backend-url' + studentID,
+        'http://localhost:7115/Student' + studentID,
         { headers: headers }
       )
       .subscribe(

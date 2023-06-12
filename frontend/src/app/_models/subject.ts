@@ -8,7 +8,7 @@ export class Subject {
     public exam: boolean = false
     public image: string = ''
     public creatorName: string = ''
-    public subjectTeachedBy: Array<Teacher> = []
+    public Teachers: Array<Teacher> = []
 
     public createTeachers(teacherList: Array<any>) {
         teacherList.map((x:any) => {
@@ -18,7 +18,7 @@ export class Subject {
             teacher.neptun = x.neptun
             teacher.image = x.image
             teacher.creatorName = teacher.creatorName
-            this.subjectTeachedBy.push(teacher)
+            this.Teachers.push(teacher)
         })
     }
 }

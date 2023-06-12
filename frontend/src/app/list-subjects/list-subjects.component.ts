@@ -19,7 +19,7 @@ export class ListSubjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-    .get<Array<Subject>>('backend-url')
+    .get<Array<Subject>>('http://localhost:7115/Subject')
     .subscribe(resp => {
       resp.map(x => {
         let s = new Subject()
@@ -30,7 +30,7 @@ export class ListSubjectsComponent implements OnInit {
         s.exam = x.exam
         s.image = x.image
         s.creatorName = x.creatorName
-        s.createTeachers(x.subjectTeachedBy)
+        s.createTeachers(x.Teachers)
         this.subjects.push(s)
       })
       console.log(this.subjects)
