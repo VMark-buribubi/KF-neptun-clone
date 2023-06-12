@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class SubjectController : ControllerBase
     {
@@ -31,7 +31,12 @@ namespace backend.Controllers
         [HttpPost]
         public IActionResult AddSubject([FromBody] Subject s)
         {
+            if (s.Id == null)
+            {
+                s.Id = Guid.NewGuid();
+            }
             dbContext.Add(s);
+            dbContext.SaveChanges();
             return Ok(s);
         }
 
@@ -44,6 +49,7 @@ namespace backend.Controllers
             old.Image = s.Image;
             old.Exam = s.Exam;
             old.Credit = s.Credit;
+            dbContext.SaveChanges();
         }
 
         [HttpDelete("{id}")]
@@ -51,6 +57,7 @@ namespace backend.Controllers
         {
             var subjectToDelete = dbContext.Subjects.FirstOrDefault(x => x.Id == id);
             dbContext.Subjects.Remove(subjectToDelete);
+            dbContext.SaveChanges();
         }
     }
 }

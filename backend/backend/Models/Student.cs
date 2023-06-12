@@ -13,8 +13,13 @@ namespace backend.Models
         public string? Neptun { get; set; }
         public int? Sumcredit { get; set; }
         public string? Image { get; set; }
-        public IdentityUser? CreatorName { get; set; }
-        public virtual ICollection<Subject>? Subjects { get; set; }
 
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        public IdentityUser? CreatorName { get; set; }
+
+        [Newtonsoft.Json.JsonIgnore]
+        [System.Text.Json.Serialization.JsonIgnore]
+        public virtual ICollection<Subject>? Subjects { get; set; }
     }
 }

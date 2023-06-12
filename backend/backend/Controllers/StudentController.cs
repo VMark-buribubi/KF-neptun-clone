@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
     {
@@ -34,7 +34,12 @@ namespace backend.Controllers
         [HttpPost]
         public IActionResult AddStudent([FromBody] Student s)
         {
+            if (s.Id == null)
+            {
+                s.Id = Guid.NewGuid();
+            }
             dbContext.Add(s);
+            dbContext.SaveChanges();
             return Ok(s);
         }
 
@@ -45,6 +50,7 @@ namespace backend.Controllers
             old.Name = s.Name;
             old.Neptun = s.Neptun;
             old.Image = s.Image;
+            dbContext.SaveChanges();
         }
 
         [HttpDelete("{id}")]
@@ -52,6 +58,7 @@ namespace backend.Controllers
         {
             var studentToDelete = dbContext.Students.FirstOrDefault(x => x.Id == id);
             dbContext.Students.Remove(studentToDelete);
+            dbContext.SaveChanges();
         }
     }
 }

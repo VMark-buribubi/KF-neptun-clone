@@ -12,8 +12,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230611231139_qwasd")]
-    partial class qwasd
+    [Migration("20230612170143_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -245,36 +245,6 @@ namespace backend.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("StudentSubject", b =>
-                {
-                    b.Property<Guid>("StudentsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SubjectsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("StudentsId", "SubjectsId");
-
-                    b.HasIndex("SubjectsId");
-
-                    b.ToTable("StudentSubject");
-                });
-
-            modelBuilder.Entity("SubjectTeacher", b =>
-                {
-                    b.Property<Guid>("SubjectsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TeachersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("SubjectsId", "TeachersId");
-
-                    b.HasIndex("TeachersId");
-
-                    b.ToTable("SubjectTeacher");
-                });
-
             modelBuilder.Entity("backend.Models.Student", b =>
                 {
                     b.Property<Guid>("Id")
@@ -305,14 +275,14 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1b1f587a-d397-4787-b7b3-5886b0d9bebf"),
+                            Id = new Guid("ea201b3d-5121-4415-98e2-f1e56115aed2"),
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg",
                             Name = "John Doe",
                             Neptun = "ABC123"
                         },
                         new
                         {
-                            Id = new Guid("9868cbd2-f683-4398-9efa-384160c343af"),
+                            Id = new Guid("4dd985ce-af6a-4016-bb43-1e5dc0953980"),
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg",
                             Name = "Jane Smith",
                             Neptun = "DEF456"
@@ -343,30 +313,37 @@ namespace backend.Migrations
                     b.Property<string>("Neptun")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CreatorNameId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Subjects");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d9cbf7a2-77c6-40fe-a110-d8fc7c4a44b4"),
+                            Id = new Guid("65ee5112-80da-46a7-b2ea-cc5a70ab5a09"),
                             Credit = 4,
                             Exam = true,
                             Image = "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U",
                             Name = "Math",
-                            Neptun = "MATH101"
+                            Neptun = "MATH101",
+                            StudentId = new Guid("ea201b3d-5121-4415-98e2-f1e56115aed2")
                         },
                         new
                         {
-                            Id = new Guid("f7ccc0b2-c5fa-4812-a22a-25683bb477e2"),
+                            Id = new Guid("32af0331-8045-4137-8289-81f9f86da6f7"),
                             Credit = 3,
                             Exam = false,
                             Image = "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ",
                             Name = "Science",
-                            Neptun = "SCI202"
+                            Neptun = "SCI202",
+                            StudentId = new Guid("4dd985ce-af6a-4016-bb43-1e5dc0953980")
                         });
                 });
 
@@ -388,26 +365,33 @@ namespace backend.Migrations
                     b.Property<string>("Neptun")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("SubjectId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CreatorNameId");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Teachers");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a98f57b4-bf68-4301-831c-d892d6faebb1"),
+                            Id = new Guid("1ecc569d-30ff-4cb3-ada6-5215274e0603"),
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg",
                             Name = "Professor X",
-                            Neptun = "PROF01"
+                            Neptun = "PROF01",
+                            SubjectId = new Guid("65ee5112-80da-46a7-b2ea-cc5a70ab5a09")
                         },
                         new
                         {
-                            Id = new Guid("fab3e282-6a8c-4a39-bb3f-f94e97987806"),
+                            Id = new Guid("2b929eef-d5bb-4fa1-9d51-bffa41a6e359"),
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg",
                             Name = "Dr. Watson",
-                            Neptun = "DRWAT02"
+                            Neptun = "DRWAT02",
+                            SubjectId = new Guid("65ee5112-80da-46a7-b2ea-cc5a70ab5a09")
                         });
                 });
 
@@ -426,16 +410,16 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c6618c64-32d0-43d7-b076-29c5996f1966",
+                            Id = "5acd78f3-2c1d-480d-ae65-6929f76e8e24",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ad0a4739-3008-49dc-8494-c5c667bf4ec8",
+                            ConcurrencyStamp = "5415dac8-a751-4681-9dac-9cd04d0b93d1",
                             Email = "kovi91@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "KOVI91@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELuYTlCxLE2rURVECYMwdlsISEbHvlKFDvXydGIQJY2GPTJJ05GIer+dUoQ8MaNW3w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELAAzab5LFRa6QSp6Cvrno/tXvXzExFTRbZuyfP4NyqSBqx+YULKTjaqbq05iY7oyQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5c621f59-6259-46f9-a2cb-c0fb90c11eff",
+                            SecurityStamp = "59fa018a-0527-4922-97f3-661c6bfa9d8b",
                             TwoFactorEnabled = false,
                             UserName = "kovi91@gmail.com",
                             FirstName = "Kovács",
@@ -494,36 +478,6 @@ namespace backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StudentSubject", b =>
-                {
-                    b.HasOne("backend.Models.Student", null)
-                        .WithMany()
-                        .HasForeignKey("StudentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("backend.Models.Subject", null)
-                        .WithMany()
-                        .HasForeignKey("SubjectsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SubjectTeacher", b =>
-                {
-                    b.HasOne("backend.Models.Subject", null)
-                        .WithMany()
-                        .HasForeignKey("SubjectsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("backend.Models.Teacher", null)
-                        .WithMany()
-                        .HasForeignKey("TeachersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("backend.Models.Student", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "CreatorName")
@@ -539,7 +493,15 @@ namespace backend.Migrations
                         .WithMany()
                         .HasForeignKey("CreatorNameId");
 
+                    b.HasOne("backend.Models.Student", "Student")
+                        .WithMany("Subjects")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CreatorName");
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("backend.Models.Teacher", b =>
@@ -548,7 +510,25 @@ namespace backend.Migrations
                         .WithMany()
                         .HasForeignKey("CreatorNameId");
 
+                    b.HasOne("backend.Models.Subject", "Subject")
+                        .WithMany("Teachers")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CreatorName");
+
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("backend.Models.Student", b =>
+                {
+                    b.Navigation("Subjects");
+                });
+
+            modelBuilder.Entity("backend.Models.Subject", b =>
+                {
+                    b.Navigation("Teachers");
                 });
 #pragma warning restore 612, 618
         }
