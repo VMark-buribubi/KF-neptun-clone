@@ -27,7 +27,6 @@ export class ListStudentsComponent implements OnInit{
         s.neptun = x.neptun
         s.sumcredit = x.sumcredit
         s.image = x.image
-        s.creatorName = x.creatorName
         s.createSubjects(x.Subjects)
         this.students.push(s)
       })

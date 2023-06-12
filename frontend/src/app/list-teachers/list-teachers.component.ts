@@ -26,7 +26,6 @@ export class ListTeachersComponent {
         t.name = x.name
         t.neptun = x.neptun
         t.image = x.image
-        t.creatorName = x.creatorName
         this.teachers.push(t)
       })
       console.log(this.teachers)

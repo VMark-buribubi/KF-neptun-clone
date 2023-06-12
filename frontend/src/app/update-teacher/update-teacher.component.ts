@@ -36,7 +36,6 @@ export class UpdateTeacherComponent implements OnInit{
           this.teacher.name = x.name
           this.teacher.neptun = x.neptun
           this.teacher.image = x.image
-          this.teacher.creatorName = x.creatorName
         })
         
         console.log(this.teacher)

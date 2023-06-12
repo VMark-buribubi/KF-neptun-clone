@@ -41,7 +41,6 @@ export class ConnectStudentToSubjectComponent implements OnInit{
         s.neptun = x.neptun
         s.sumcredit = x.sumcredit
         s.image = x.image
-        s.creatorName = x.creatorName
         this.students.push(s)
       })
     })
@@ -57,7 +56,6 @@ export class ConnectStudentToSubjectComponent implements OnInit{
         s.credit = x.credit
         s.exam = x.exam
         s.image = x.image
-        s.creatorName = x.creatorName
         this.subjects.push(s)
       })
     })

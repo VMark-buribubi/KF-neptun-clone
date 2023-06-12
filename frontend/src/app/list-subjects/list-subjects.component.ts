@@ -29,7 +29,6 @@ export class ListSubjectsComponent implements OnInit {
         s.credit = x.credit
         s.exam = x.exam
         s.image = x.image
-        s.creatorName = x.creatorName
         s.createTeachers(x.Teachers)
         this.subjects.push(s)
       })

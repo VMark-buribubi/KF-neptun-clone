@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./noncrud.component.scss']
 })
 export class NoncrudComponent {
-
+    
 }

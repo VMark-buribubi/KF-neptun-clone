@@ -38,7 +38,6 @@ export class UpdateSubjectComponent implements OnInit{
           this.subject.credit = x.credit
           this.subject.exam = x.exam
           this.subject.image = x.image
-          this.subject.creatorName = x.creatorName
         })
         console.log(this.subject)
       })

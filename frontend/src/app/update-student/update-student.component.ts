@@ -37,7 +37,6 @@ export class UpdateStudentComponent implements OnInit{
           this.student.neptun = x.neptun
           this.student.sumcredit = x.sumcredit
           this.student.image = x.image
-          this.student.creatorName = x.creatorName
         })
         
         console.log(this.student)

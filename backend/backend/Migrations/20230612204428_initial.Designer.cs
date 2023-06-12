@@ -12,8 +12,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230612170143_init")]
-    partial class init
+    [Migration("20230612204428_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -251,9 +251,6 @@ namespace backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatorNameId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -263,26 +260,21 @@ namespace backend.Migrations
                     b.Property<string>("Neptun")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Sumcredit")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatorNameId");
 
                     b.ToTable("Students");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ea201b3d-5121-4415-98e2-f1e56115aed2"),
+                            Id = new Guid("e5f50258-334e-47fe-be1a-f884479eb219"),
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg",
                             Name = "John Doe",
                             Neptun = "ABC123"
                         },
                         new
                         {
-                            Id = new Guid("4dd985ce-af6a-4016-bb43-1e5dc0953980"),
+                            Id = new Guid("30b3a9d4-2385-42a4-9704-c8f5249941f8"),
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg",
                             Name = "Jane Smith",
                             Neptun = "DEF456"
@@ -294,9 +286,6 @@ namespace backend.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatorNameId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("Credit")
                         .HasColumnType("int");
@@ -318,8 +307,6 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatorNameId");
-
                     b.HasIndex("StudentId");
 
                     b.ToTable("Subjects");
@@ -327,23 +314,23 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("65ee5112-80da-46a7-b2ea-cc5a70ab5a09"),
+                            Id = new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858"),
                             Credit = 4,
                             Exam = true,
                             Image = "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U",
                             Name = "Math",
                             Neptun = "MATH101",
-                            StudentId = new Guid("ea201b3d-5121-4415-98e2-f1e56115aed2")
+                            StudentId = new Guid("e5f50258-334e-47fe-be1a-f884479eb219")
                         },
                         new
                         {
-                            Id = new Guid("32af0331-8045-4137-8289-81f9f86da6f7"),
+                            Id = new Guid("d3285ef3-e753-4dbe-8115-ae8542489455"),
                             Credit = 3,
                             Exam = false,
                             Image = "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ",
                             Name = "Science",
                             Neptun = "SCI202",
-                            StudentId = new Guid("4dd985ce-af6a-4016-bb43-1e5dc0953980")
+                            StudentId = new Guid("30b3a9d4-2385-42a4-9704-c8f5249941f8")
                         });
                 });
 
@@ -352,9 +339,6 @@ namespace backend.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatorNameId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -370,8 +354,6 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatorNameId");
-
                     b.HasIndex("SubjectId");
 
                     b.ToTable("Teachers");
@@ -379,19 +361,19 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1ecc569d-30ff-4cb3-ada6-5215274e0603"),
+                            Id = new Guid("7099698a-9fae-45e1-884b-4b7e8c9b5cb1"),
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg",
                             Name = "Professor X",
                             Neptun = "PROF01",
-                            SubjectId = new Guid("65ee5112-80da-46a7-b2ea-cc5a70ab5a09")
+                            SubjectId = new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858")
                         },
                         new
                         {
-                            Id = new Guid("2b929eef-d5bb-4fa1-9d51-bffa41a6e359"),
+                            Id = new Guid("60056a07-3a14-46e4-9fc7-5506d1969b58"),
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg",
                             Name = "Dr. Watson",
                             Neptun = "DRWAT02",
-                            SubjectId = new Guid("65ee5112-80da-46a7-b2ea-cc5a70ab5a09")
+                            SubjectId = new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858")
                         });
                 });
 
@@ -410,16 +392,16 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5acd78f3-2c1d-480d-ae65-6929f76e8e24",
+                            Id = "b66d4f9b-738c-4b17-aabb-1e74469dc4f5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5415dac8-a751-4681-9dac-9cd04d0b93d1",
+                            ConcurrencyStamp = "b1cca0ea-047c-405b-8139-f672c38f0366",
                             Email = "kovi91@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "KOVI91@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELAAzab5LFRa6QSp6Cvrno/tXvXzExFTRbZuyfP4NyqSBqx+YULKTjaqbq05iY7oyQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHhpxxhMENfoDKpy0mgM3TZpYNYT1igSZAV7x98rTYeZQxQOKl8Ma0BSiy/I5RL++Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "59fa018a-0527-4922-97f3-661c6bfa9d8b",
+                            SecurityStamp = "7a01d73d-1162-424d-8659-a0d663fac43e",
                             TwoFactorEnabled = false,
                             UserName = "kovi91@gmail.com",
                             FirstName = "Kovács",
@@ -478,45 +460,24 @@ namespace backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.Models.Student", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "CreatorName")
-                        .WithMany()
-                        .HasForeignKey("CreatorNameId");
-
-                    b.Navigation("CreatorName");
-                });
-
             modelBuilder.Entity("backend.Models.Subject", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "CreatorName")
-                        .WithMany()
-                        .HasForeignKey("CreatorNameId");
-
                     b.HasOne("backend.Models.Student", "Student")
                         .WithMany("Subjects")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CreatorName");
-
                     b.Navigation("Student");
                 });
 
             modelBuilder.Entity("backend.Models.Teacher", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "CreatorName")
-                        .WithMany()
-                        .HasForeignKey("CreatorNameId");
-
                     b.HasOne("backend.Models.Subject", "Subject")
                         .WithMany("Teachers")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("CreatorName");
 
                     b.Navigation("Subject");
                 });

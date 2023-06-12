@@ -7,18 +7,18 @@ export class Subject {
     public credit: number = 0
     public exam: boolean = false
     public image: string = ''
-    public creatorName: string = ''
     public Teachers: Array<Teacher> = []
 
     public createTeachers(teacherList: Array<any>) {
-        teacherList.map((x:any) => {
-            let teacher = new Teacher()
-            teacher.id = x.id
-            teacher.name = x.name
-            teacher.neptun = x.neptun
-            teacher.image = x.image
-            teacher.creatorName = teacher.creatorName
-            this.Teachers.push(teacher)
-        })
-    }
+        if (teacherList) {
+            teacherList.map((x:any) => {
+                let teacher = new Teacher()
+                teacher.id = x.id
+                teacher.name = x.name
+                teacher.neptun = x.neptun
+                teacher.image = x.image
+                this.Teachers.push(teacher)
+            })
+        }
+    }   
 }

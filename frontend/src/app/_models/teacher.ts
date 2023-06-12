@@ -3,5 +3,4 @@ export class Teacher {
     name: string = ''
     neptun: string = ''
     image: string = ''
-    creatorName: string = ''
 }
