@@ -26,7 +26,7 @@ export class CreateSubjectComponent {
     })
     this.http
       .post(
-        'backend-url',
+        'http://localhost:7115/Subject',
         this.subject,
         { headers: headers }
       )
