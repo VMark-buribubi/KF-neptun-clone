@@ -28,7 +28,7 @@ export class LoginComponent {
 
   public sendLoginCredentials() : void {
     this.http
-    .post<TokenModel>("backend-url", this.loginModel)
+    .post<TokenModel>("http://localhost:7115/Auth/login", this.loginModel)
     .subscribe(
       (success) => {
         localStorage.setItem('token', success.token)

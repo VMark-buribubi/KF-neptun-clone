@@ -18,7 +18,7 @@ export class ListTeachersComponent {
 
   ngOnInit(): void {
     this.http
-    .get<Array<Teacher>>('backend-url')
+    .get<Array<Teacher>>('http://localhost:7115/Teacher')
     .subscribe(resp => {
       resp.map(x => {
         let t = new Teacher()

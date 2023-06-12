@@ -18,7 +18,7 @@ export class ListStudentsComponent implements OnInit{
 
   ngOnInit(): void {
     this.http
-    .get<Array<Student>>('backend-url')
+    .get<Array<Student>>('http://localhost:7115/Student')
     .subscribe(resp => {
       resp.map(x => {
         let s = new Student()
@@ -28,7 +28,7 @@ export class ListStudentsComponent implements OnInit{
         s.sumcredit = x.sumcredit
         s.image = x.image
         s.creatorName = x.creatorName
-        s.createSubjects(x.studiedSubjects)
+        s.createSubjects(x.Subjects)
         this.students.push(s)
       })
       console.log(this.students)

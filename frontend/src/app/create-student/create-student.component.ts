@@ -20,13 +20,14 @@ export class CreateStudentComponent {
   }
 
   public createStudent() : void {
+    console.log(this.student)
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     })
     this.http
       .post(
-        'backend-url',
+        'http://localhost:7115/Student',
         this.student,
         { headers: headers }
       )

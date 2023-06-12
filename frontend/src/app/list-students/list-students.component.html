@@ -12,10 +12,10 @@
     <mat-card-content>
         <p>Sum Credit: {{ student.sumcredit }}</p>
         <mat-divider></mat-divider>
-        <div *ngIf="student.studiedSubjects.length > 0; else noElementsToDisplay">
+        <div *ngIf="student.Subjects.length > 0; else noElementsToDisplay">
             <button
                 mat-stroked-button
-                *ngFor="let subject of student.studiedSubjects"
+                *ngFor="let subject of student.Subjects"
             >
                 {{ subject.name }} - {{ subject.neptun }} - ({{ subject.neptun }})
             </button>
