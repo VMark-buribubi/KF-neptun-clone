@@ -16,6 +16,7 @@ import { CreateSubjectComponent } from './create-subject/create-subject.componen
 import { CreateTeacherComponent } from './create-teacher/create-teacher.component';
 import { ConnectStudentToSubjectComponent } from './connect-student-to-subject/connect-student-to-subject.component';
 import { ConnectSubjectToTeacherComponent } from './connect-subject-to-teacher/connect-subject-to-teacher.component';
+import { NoncrudComponent } from './noncrud/noncrud.component';
 
 
 const routes: Routes = [
@@ -31,13 +32,15 @@ const routes: Routes = [
   { path: 'create-subject', component: CreateSubjectComponent, canActivate: [ApiService]},
   { path: 'create-teacher', component: CreateTeacherComponent, canActivate: [ApiService]},
 
-  { path: 'connect-student-to-subject', component: ConnectStudentToSubjectComponent, },
-  { path: 'connect-subject-to-teacher', component: ConnectSubjectToTeacherComponent, },
+  { path: 'connect-student-to-subject', component: ConnectStudentToSubjectComponent, canActivate: [ApiService]},
+  { path: 'connect-subject-to-teacher', component: ConnectSubjectToTeacherComponent, canActivate: [ApiService]},
 
   { path: 'update-student/:id', component: UpdateStudentComponent, canActivate: [ApiService]},
   { path: 'update-teacher/:id', component: UpdateTeacherComponent, canActivate: [ApiService]},
   { path: 'update-subject/:id', component: UpdateSubjectComponent, canActivate: [ApiService]},
 
+  { path: 'noncrud', component: NoncrudComponent },
+  
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
