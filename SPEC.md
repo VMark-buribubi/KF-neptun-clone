@@ -14,9 +14,10 @@ A tárgyakhoz tartoznak tanárok, akik az adott tárgyat tanítják. Külön kü
 - Noncrud végpontok
 
 ## Home
-
+https://imgur.com/a/JwChIhn
 
 ## Listázás
-
+https://imgur.com/a/vWBQyKm
 
 ## Update/Delete
+https://imgur.com/a/J8Dx2j3
