@@ -8,7 +8,7 @@ namespace backend.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string? Name { get; set; }
         public string? Neptun { get; set; }
         private int? sumCredit;
@@ -30,9 +30,6 @@ namespace backend.Models
         }
 
         public string? Image { get; set; }
-
-        [Newtonsoft.Json.JsonIgnore]
-        [System.Text.Json.Serialization.JsonIgnore]
         public virtual ICollection<Subject>? Subjects { get; set; }
     }
 }

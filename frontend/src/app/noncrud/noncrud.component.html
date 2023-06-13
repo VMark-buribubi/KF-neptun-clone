@@ -1,1 +1,20 @@
-<p>noncrud works!</p>
+<h2>Students with Neptun Code</h2>
+<div *ngIf="studentsWithNeptunCode">
+  <ul>
+    <li *ngFor="let student of studentsWithNeptunCode">{{ student.name }}</li>
+  </ul>
+</div>
+
+<h2>Students with More Than One Subject</h2>
+<div *ngIf="studentsWithMoreThanOneSubject">
+  <ul>
+    <li *ngFor="let student of studentsWithMoreThanOneSubject">{{ student.name }}</li>
+  </ul>
+</div>
+
+<h2>Exam Subjects with Credit Greater Than {{ credit }}</h2>
+<div *ngIf="examSubjectsWithCredit">
+  <ul>
+    <li *ngFor="let subject of examSubjectsWithCredit">{{ subject.name }}</li>
+  </ul>
+</div>

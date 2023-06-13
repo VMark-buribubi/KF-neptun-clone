@@ -24,7 +24,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public Teacher? GetTeacher(Guid id)
+        public Teacher? GetTeacher(string id)
         {
             return dbContext.Teachers.FirstOrDefault(x => x.Id == id);
         }
@@ -33,9 +33,9 @@ namespace backend.Controllers
         [HttpPost]
         public IActionResult AddTeacher([FromBody] Teacher s)
         {
-            if (s.Id == null)
+            if (s.Id == null || s.Id == "")
             {
-                s.Id = Guid.NewGuid();
+                s.Id = Guid.NewGuid().ToString();
             }
             dbContext.Add(s);
             dbContext.SaveChanges();
@@ -55,7 +55,7 @@ namespace backend.Controllers
 
         [Authorize]
         [HttpDelete("{id}")]
-        public void DeteleTeacher(Guid id)
+        public void DeteleTeacher(string id)
         {
             var teacherToDelete = dbContext.Teachers.FirstOrDefault(x => x.Id == id);
             dbContext.Teachers.Remove(teacherToDelete);

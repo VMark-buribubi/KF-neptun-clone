@@ -24,7 +24,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public Subject? GetSubject(Guid id)
+        public Subject? GetSubject(string id)
         {
             return dbContext.Subjects.FirstOrDefault(x => x.Id == id);
         }
@@ -35,7 +35,7 @@ namespace backend.Controllers
         {
             if (s.Id == null)
             {
-                s.Id = Guid.NewGuid();
+                s.Id = Guid.NewGuid().ToString();
             }
             dbContext.Add(s);
             dbContext.SaveChanges();
@@ -57,7 +57,7 @@ namespace backend.Controllers
 
         [Authorize]
         [HttpDelete("{id}")]
-        public void DeteleSubject(Guid id)
+        public void DeteleSubject(string id)
         {
             var subjectToDelete = dbContext.Subjects.FirstOrDefault(x => x.Id == id);
             dbContext.Subjects.Remove(subjectToDelete);

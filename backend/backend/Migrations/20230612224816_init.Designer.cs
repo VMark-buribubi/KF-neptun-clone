@@ -12,8 +12,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230612204428_initial")]
-    partial class initial
+    [Migration("20230612224816_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -247,9 +247,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.Student", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -267,14 +267,14 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e5f50258-334e-47fe-be1a-f884479eb219"),
+                            Id = "04512491-7185-4c58-86b7-5715186bf435",
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg",
                             Name = "John Doe",
                             Neptun = "ABC123"
                         },
                         new
                         {
-                            Id = new Guid("30b3a9d4-2385-42a4-9704-c8f5249941f8"),
+                            Id = "f01ff35c-af74-454b-90b6-120c965be986",
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg",
                             Name = "Jane Smith",
                             Neptun = "DEF456"
@@ -283,9 +283,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.Models.Subject", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("Credit")
                         .HasColumnType("int");
@@ -302,8 +302,9 @@ namespace backend.Migrations
                     b.Property<string>("Neptun")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("StudentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -314,31 +315,31 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858"),
+                            Id = "765e1aa3-7cc0-4b49-93bd-1718f52d62b0",
                             Credit = 4,
                             Exam = true,
                             Image = "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U",
                             Name = "Math",
                             Neptun = "MATH101",
-                            StudentId = new Guid("e5f50258-334e-47fe-be1a-f884479eb219")
+                            StudentId = "04512491-7185-4c58-86b7-5715186bf435"
                         },
                         new
                         {
-                            Id = new Guid("d3285ef3-e753-4dbe-8115-ae8542489455"),
+                            Id = "e0994d3a-2421-48db-a101-aa7ee6db9a30",
                             Credit = 3,
                             Exam = false,
                             Image = "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ",
                             Name = "Science",
                             Neptun = "SCI202",
-                            StudentId = new Guid("30b3a9d4-2385-42a4-9704-c8f5249941f8")
+                            StudentId = "f01ff35c-af74-454b-90b6-120c965be986"
                         });
                 });
 
             modelBuilder.Entity("backend.Models.Teacher", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -349,8 +350,9 @@ namespace backend.Migrations
                     b.Property<string>("Neptun")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SubjectId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("SubjectId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -361,19 +363,19 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7099698a-9fae-45e1-884b-4b7e8c9b5cb1"),
+                            Id = "af0aa15e-0b94-47c5-a6af-40676b383298",
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg",
                             Name = "Professor X",
                             Neptun = "PROF01",
-                            SubjectId = new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858")
+                            SubjectId = "765e1aa3-7cc0-4b49-93bd-1718f52d62b0"
                         },
                         new
                         {
-                            Id = new Guid("60056a07-3a14-46e4-9fc7-5506d1969b58"),
+                            Id = "fad8e584-45a6-49ae-be53-5b0c36dec710",
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg",
                             Name = "Dr. Watson",
                             Neptun = "DRWAT02",
-                            SubjectId = new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858")
+                            SubjectId = "765e1aa3-7cc0-4b49-93bd-1718f52d62b0"
                         });
                 });
 
@@ -392,16 +394,16 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b66d4f9b-738c-4b17-aabb-1e74469dc4f5",
+                            Id = "75be15d1-d290-4664-8ec0-6797c855b2b2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1cca0ea-047c-405b-8139-f672c38f0366",
+                            ConcurrencyStamp = "a31202aa-f589-49c1-ada4-8c3b57cefe40",
                             Email = "kovi91@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "KOVI91@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHhpxxhMENfoDKpy0mgM3TZpYNYT1igSZAV7x98rTYeZQxQOKl8Ma0BSiy/I5RL++Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELZvRgZ1cxXskZorlpoJZa/6rkC/Vc4QObLTnDTnodQcYXNu4WIefwKx+qHw2HOOJw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7a01d73d-1162-424d-8659-a0d663fac43e",
+                            SecurityStamp = "5acb2520-aba6-4fdb-a708-f31423752103",
                             TwoFactorEnabled = false,
                             UserName = "kovi91@gmail.com",
                             FirstName = "Kovács",

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -59,7 +59,7 @@ namespace backend.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Neptun = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -179,13 +179,13 @@ namespace backend.Migrations
                 name: "Subjects",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Neptun = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Credit = table.Column<int>(type: "int", nullable: true),
                     Exam = table.Column<bool>(type: "bit", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    StudentId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -202,11 +202,11 @@ namespace backend.Migrations
                 name: "Teachers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Neptun = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubjectId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    SubjectId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -231,15 +231,15 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "b66d4f9b-738c-4b17-aabb-1e74469dc4f5", 0, "b1cca0ea-047c-405b-8139-f672c38f0366", "AppUser", "kovi91@gmail.com", true, "Kovács", "András", false, null, null, "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAEHhpxxhMENfoDKpy0mgM3TZpYNYT1igSZAV7x98rTYeZQxQOKl8Ma0BSiy/I5RL++Q==", null, false, "7a01d73d-1162-424d-8659-a0d663fac43e", false, "kovi91@gmail.com" });
+                values: new object[] { "75be15d1-d290-4664-8ec0-6797c855b2b2", 0, "a31202aa-f589-49c1-ada4-8c3b57cefe40", "AppUser", "kovi91@gmail.com", true, "Kovács", "András", false, null, null, "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAELZvRgZ1cxXskZorlpoJZa/6rkC/Vc4QObLTnDTnodQcYXNu4WIefwKx+qHw2HOOJw==", null, false, "5acb2520-aba6-4fdb-a708-f31423752103", false, "kovi91@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "Image", "Name", "Neptun" },
                 values: new object[,]
                 {
-                    { new Guid("30b3a9d4-2385-42a4-9704-c8f5249941f8"), "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg", "Jane Smith", "DEF456" },
-                    { new Guid("e5f50258-334e-47fe-be1a-f884479eb219"), "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg", "John Doe", "ABC123" }
+                    { "04512491-7185-4c58-86b7-5715186bf435", "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg", "John Doe", "ABC123" },
+                    { "f01ff35c-af74-454b-90b6-120c965be986", "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg", "Jane Smith", "DEF456" }
                 });
 
             migrationBuilder.InsertData(
@@ -247,8 +247,8 @@ namespace backend.Migrations
                 columns: new[] { "Id", "Credit", "Exam", "Image", "Name", "Neptun", "StudentId" },
                 values: new object[,]
                 {
-                    { new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858"), 4, true, "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U", "Math", "MATH101", new Guid("e5f50258-334e-47fe-be1a-f884479eb219") },
-                    { new Guid("d3285ef3-e753-4dbe-8115-ae8542489455"), 3, false, "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ", "Science", "SCI202", new Guid("30b3a9d4-2385-42a4-9704-c8f5249941f8") }
+                    { "765e1aa3-7cc0-4b49-93bd-1718f52d62b0", 4, true, "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U", "Math", "MATH101", "04512491-7185-4c58-86b7-5715186bf435" },
+                    { "e0994d3a-2421-48db-a101-aa7ee6db9a30", 3, false, "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ", "Science", "SCI202", "f01ff35c-af74-454b-90b6-120c965be986" }
                 });
 
             migrationBuilder.InsertData(
@@ -256,8 +256,8 @@ namespace backend.Migrations
                 columns: new[] { "Id", "Image", "Name", "Neptun", "SubjectId" },
                 values: new object[,]
                 {
-                    { new Guid("60056a07-3a14-46e4-9fc7-5506d1969b58"), "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg", "Dr. Watson", "DRWAT02", new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858") },
-                    { new Guid("7099698a-9fae-45e1-884b-4b7e8c9b5cb1"), "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg", "Professor X", "PROF01", new Guid("6ef96917-a0a2-4195-abb0-b7c68f164858") }
+                    { "af0aa15e-0b94-47c5-a6af-40676b383298", "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg", "Professor X", "PROF01", "765e1aa3-7cc0-4b49-93bd-1718f52d62b0" },
+                    { "fad8e584-45a6-49ae-be53-5b0c36dec710", "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg", "Dr. Watson", "DRWAT02", "765e1aa3-7cc0-4b49-93bd-1718f52d62b0" }
                 });
 
             migrationBuilder.CreateIndex(

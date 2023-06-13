@@ -50,15 +50,15 @@ namespace backend.Data
             kovi.PasswordHash = ph.HashPassword(kovi, "almafa123");
             modelBuilder.Entity<AppUser>().HasData(kovi);
 
-            Student student1 = new Student { Id = Guid.NewGuid(), Name = "John Doe", Neptun = "ABC123", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg" };
-            Student student2 = new Student { Id = Guid.NewGuid(), Name = "Jane Smith", Neptun = "DEF456", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg" };
+            Student student1 = new Student { Id = Guid.NewGuid().ToString(), Name = "John Doe", Neptun = "ABC123", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg" };
+            Student student2 = new Student { Id = Guid.NewGuid().ToString(), Name = "Jane Smith", Neptun = "DEF456", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg" };
             // Add test data for Students
             modelBuilder.Entity<Student>().HasData(
                 student1,student2
             );
 
-            Subject subject1 = new Subject { Id = Guid.NewGuid(), Name = "Math", Neptun = "MATH101", Credit = 4, Exam = true, Image = "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U", StudentId = student1.Id};
-            Subject subject2 = new Subject { Id = Guid.NewGuid(), Name = "Science", Neptun = "SCI202", Credit = 3, Exam = false, Image = "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ", StudentId = student2.Id};
+            Subject subject1 = new Subject { Id = Guid.NewGuid().ToString(), Name = "Math", Neptun = "MATH101", Credit = 4, Exam = true, Image = "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U", StudentId = student1.Id};
+            Subject subject2 = new Subject { Id = Guid.NewGuid().ToString(), Name = "Science", Neptun = "SCI202", Credit = 3, Exam = false, Image = "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ", StudentId = student2.Id};
             // Add test data for Subjects
             modelBuilder.Entity<Subject>().HasData(
                 subject1,subject2
@@ -66,8 +66,8 @@ namespace backend.Data
 
             // Add test data for Teachers
             modelBuilder.Entity<Teacher>().HasData(
-                new Teacher { Id = Guid.NewGuid(), Name = "Professor X", Neptun = "PROF01", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg", SubjectId = subject1.Id},
-                new Teacher { Id = Guid.NewGuid(), Name = "Dr. Watson", Neptun = "DRWAT02", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg", SubjectId = subject1.Id}
+                new Teacher { Id = Guid.NewGuid().ToString(), Name = "Professor X", Neptun = "PROF01", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg", SubjectId = subject1.Id},
+                new Teacher { Id = Guid.NewGuid().ToString(), Name = "Dr. Watson", Neptun = "DRWAT02", Image = "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg", SubjectId = subject1.Id}
             );
 
             base.OnModelCreating(modelBuilder);
