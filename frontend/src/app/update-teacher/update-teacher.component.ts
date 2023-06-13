@@ -74,7 +74,7 @@ export class UpdateTeacherComponent implements OnInit{
     })
     this.http
       .delete(
-        'http://localhost:7115/Teacher' + teacherID,
+        'http://localhost:7115/Teacher/' + teacherID,
         { headers: headers }
       )
       .subscribe(

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Annotations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,11 +18,17 @@ namespace backend.Models
         public bool? Exam { get; set; }
         public string? Image { get; set; }
 
+        [NotMapped]
         public virtual ICollection<Teacher>? Teachers { get; set; }
 
+        [NotMapped]
         [JsonIgnore]
-        [ValidateNever]
         public virtual Student? Student { get; set; }
         public string? StudentId { get; set; }
+
+        public Subject()
+        {
+            Teachers = new List<Teacher>();
+        }
     }
 }

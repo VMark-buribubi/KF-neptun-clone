@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,8 +29,14 @@ namespace backend.Models
                 return sum;
             }
         }
-
         public string? Image { get; set; }
+
+        [NotMapped]
         public virtual ICollection<Subject>? Subjects { get; set; }
+
+        public Student()
+        {
+            Subjects = new HashSet<Subject>();
+        }
     }
 }

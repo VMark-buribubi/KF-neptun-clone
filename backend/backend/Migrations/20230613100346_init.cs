@@ -185,7 +185,7 @@ namespace backend.Migrations
                     Credit = table.Column<int>(type: "int", nullable: true),
                     Exam = table.Column<bool>(type: "bit", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StudentId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    StudentId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -206,7 +206,7 @@ namespace backend.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Neptun = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubjectId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    SubjectId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -231,15 +231,15 @@ namespace backend.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "75be15d1-d290-4664-8ec0-6797c855b2b2", 0, "a31202aa-f589-49c1-ada4-8c3b57cefe40", "AppUser", "kovi91@gmail.com", true, "Kovács", "András", false, null, null, "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAELZvRgZ1cxXskZorlpoJZa/6rkC/Vc4QObLTnDTnodQcYXNu4WIefwKx+qHw2HOOJw==", null, false, "5acb2520-aba6-4fdb-a708-f31423752103", false, "kovi91@gmail.com" });
+                values: new object[] { "11363cb7-a8a4-4e27-90aa-08096eb3d6c0", 0, "cb99dfbc-efa3-4a9a-a2ee-a89609c764da", "AppUser", "kovi91@gmail.com", true, "Kovács", "András", false, null, null, "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAEMCV4NDWsjN521LWH6Dqiuklnsp6v01A3+po3JBL1ogDaBV5rbnoW9cxiDnEm7+2aA==", null, false, "1644071e-4331-4057-be63-0774c831804b", false, "kovi91@gmail.com" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "Image", "Name", "Neptun" },
                 values: new object[,]
                 {
-                    { "04512491-7185-4c58-86b7-5715186bf435", "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg", "John Doe", "ABC123" },
-                    { "f01ff35c-af74-454b-90b6-120c965be986", "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg", "Jane Smith", "DEF456" }
+                    { "53bb75f3-04ce-4c56-abb2-1d60f9faeb4c", "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg", "Jane Smith", "DEF456" },
+                    { "b3615167-399a-4faa-b3eb-6e97d3dd6baa", "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg", "John Doe", "ABC123" }
                 });
 
             migrationBuilder.InsertData(
@@ -247,8 +247,8 @@ namespace backend.Migrations
                 columns: new[] { "Id", "Credit", "Exam", "Image", "Name", "Neptun", "StudentId" },
                 values: new object[,]
                 {
-                    { "765e1aa3-7cc0-4b49-93bd-1718f52d62b0", 4, true, "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U", "Math", "MATH101", "04512491-7185-4c58-86b7-5715186bf435" },
-                    { "e0994d3a-2421-48db-a101-aa7ee6db9a30", 3, false, "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ", "Science", "SCI202", "f01ff35c-af74-454b-90b6-120c965be986" }
+                    { "5511abb6-912a-4f41-9d7a-d879280fbbc7", 4, true, "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U", "Math", "MATH101", "b3615167-399a-4faa-b3eb-6e97d3dd6baa" },
+                    { "c8b5b9f0-8d45-4718-847a-cef08c4ca70c", 3, false, "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ", "Science", "SCI202", "53bb75f3-04ce-4c56-abb2-1d60f9faeb4c" }
                 });
 
             migrationBuilder.InsertData(
@@ -256,8 +256,8 @@ namespace backend.Migrations
                 columns: new[] { "Id", "Image", "Name", "Neptun", "SubjectId" },
                 values: new object[,]
                 {
-                    { "af0aa15e-0b94-47c5-a6af-40676b383298", "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg", "Professor X", "PROF01", "765e1aa3-7cc0-4b49-93bd-1718f52d62b0" },
-                    { "fad8e584-45a6-49ae-be53-5b0c36dec710", "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg", "Dr. Watson", "DRWAT02", "765e1aa3-7cc0-4b49-93bd-1718f52d62b0" }
+                    { "42af34bc-1b4c-40d1-b108-e2e22b2203be", "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg", "Dr. Watson", "DRWAT02", "5511abb6-912a-4f41-9d7a-d879280fbbc7" },
+                    { "dd328e1f-8001-4789-8b1d-46814152dfbe", "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg", "Professor X", "PROF01", "5511abb6-912a-4f41-9d7a-d879280fbbc7" }
                 });
 
             migrationBuilder.CreateIndex(

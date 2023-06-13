@@ -20,6 +20,7 @@ builder.Services.AddControllers(opt =>
 {
     opt.Filters.Add<ApiExceptionFilter>();
 });
+builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

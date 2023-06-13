@@ -264,14 +264,14 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "04512491-7185-4c58-86b7-5715186bf435",
+                            Id = "b3615167-399a-4faa-b3eb-6e97d3dd6baa",
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/0.jpg",
                             Name = "John Doe",
                             Neptun = "ABC123"
                         },
                         new
                         {
-                            Id = "f01ff35c-af74-454b-90b6-120c965be986",
+                            Id = "53bb75f3-04ce-4c56-abb2-1d60f9faeb4c",
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/1.jpg",
                             Name = "Jane Smith",
                             Neptun = "DEF456"
@@ -300,7 +300,6 @@ namespace backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -312,23 +311,23 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "765e1aa3-7cc0-4b49-93bd-1718f52d62b0",
+                            Id = "5511abb6-912a-4f41-9d7a-d879280fbbc7",
                             Credit = 4,
                             Exam = true,
                             Image = "https://fastly.picsum.photos/id/229/200/300.jpg?hmac=WD1_MXzGKrVpaJj2Utxv7FoijRJ6h4S4zrBj7wmsx1U",
                             Name = "Math",
                             Neptun = "MATH101",
-                            StudentId = "04512491-7185-4c58-86b7-5715186bf435"
+                            StudentId = "b3615167-399a-4faa-b3eb-6e97d3dd6baa"
                         },
                         new
                         {
-                            Id = "e0994d3a-2421-48db-a101-aa7ee6db9a30",
+                            Id = "c8b5b9f0-8d45-4718-847a-cef08c4ca70c",
                             Credit = 3,
                             Exam = false,
                             Image = "https://fastly.picsum.photos/id/604/200/300.jpg?hmac=6ceMKS8u7easDoKzWSaIiSTpRlTPn1OUOdfSJWou3uQ",
                             Name = "Science",
                             Neptun = "SCI202",
-                            StudentId = "f01ff35c-af74-454b-90b6-120c965be986"
+                            StudentId = "53bb75f3-04ce-4c56-abb2-1d60f9faeb4c"
                         });
                 });
 
@@ -348,7 +347,6 @@ namespace backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubjectId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -360,19 +358,19 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "af0aa15e-0b94-47c5-a6af-40676b383298",
+                            Id = "dd328e1f-8001-4789-8b1d-46814152dfbe",
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/2.jpg",
                             Name = "Professor X",
                             Neptun = "PROF01",
-                            SubjectId = "765e1aa3-7cc0-4b49-93bd-1718f52d62b0"
+                            SubjectId = "5511abb6-912a-4f41-9d7a-d879280fbbc7"
                         },
                         new
                         {
-                            Id = "fad8e584-45a6-49ae-be53-5b0c36dec710",
+                            Id = "42af34bc-1b4c-40d1-b108-e2e22b2203be",
                             Image = "https://xsgames.co/randomusers/assets/avatars/pixel/3.jpg",
                             Name = "Dr. Watson",
                             Neptun = "DRWAT02",
-                            SubjectId = "765e1aa3-7cc0-4b49-93bd-1718f52d62b0"
+                            SubjectId = "5511abb6-912a-4f41-9d7a-d879280fbbc7"
                         });
                 });
 
@@ -391,16 +389,16 @@ namespace backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "75be15d1-d290-4664-8ec0-6797c855b2b2",
+                            Id = "11363cb7-a8a4-4e27-90aa-08096eb3d6c0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a31202aa-f589-49c1-ada4-8c3b57cefe40",
+                            ConcurrencyStamp = "cb99dfbc-efa3-4a9a-a2ee-a89609c764da",
                             Email = "kovi91@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "KOVI91@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELZvRgZ1cxXskZorlpoJZa/6rkC/Vc4QObLTnDTnodQcYXNu4WIefwKx+qHw2HOOJw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMCV4NDWsjN521LWH6Dqiuklnsp6v01A3+po3JBL1ogDaBV5rbnoW9cxiDnEm7+2aA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5acb2520-aba6-4fdb-a708-f31423752103",
+                            SecurityStamp = "1644071e-4331-4057-be63-0774c831804b",
                             TwoFactorEnabled = false,
                             UserName = "kovi91@gmail.com",
                             FirstName = "Kovács",
@@ -464,8 +462,7 @@ namespace backend.Migrations
                     b.HasOne("backend.Models.Student", "Student")
                         .WithMany("Subjects")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Student");
                 });
@@ -475,8 +472,7 @@ namespace backend.Migrations
                     b.HasOne("backend.Models.Subject", "Subject")
                         .WithMany("Teachers")
                         .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Subject");
                 });
