@@ -33,10 +33,19 @@ namespace backend.Controllers
         [HttpPost]
         public IActionResult AddSubject([FromBody] Subject s)
         {
-            if (s.Id == null)
+            if (string.IsNullOrEmpty(s.Id))
             {
                 s.Id = Guid.NewGuid().ToString();
             }
+            else
+            {
+                var existingSubject = dbContext.Subjects.FirstOrDefault(x => x.Id == s.Id);
+                if (existingSubject != null)
+                {
+                    return Conflict("Subject with the same Id already exists");
+                }
+            }
+
             dbContext.Add(s);
             dbContext.SaveChanges();
             return Ok(s);

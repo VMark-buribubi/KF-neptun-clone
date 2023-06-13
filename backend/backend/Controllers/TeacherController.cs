@@ -33,10 +33,19 @@ namespace backend.Controllers
         [HttpPost]
         public IActionResult AddTeacher([FromBody] Teacher s)
         {
-            if (s.Id == null || s.Id == "")
+            if (string.IsNullOrEmpty(s.Id))
             {
                 s.Id = Guid.NewGuid().ToString();
             }
+            else
+            {
+                var existingTeacher = dbContext.Teachers.FirstOrDefault(x => x.Id == s.Id);
+                if (existingTeacher != null)
+                {
+                    return Conflict("Teacher with the same Id already exists");
+                }
+            }
+
             dbContext.Add(s);
             dbContext.SaveChanges();
             return Ok(s);

@@ -35,14 +35,24 @@ namespace backend.Controllers
         [HttpPost]
         public IActionResult AddStudent([FromBody] Student s)
         {
-            if (s.Id == null)
+            if (string.IsNullOrEmpty(s.Id))
             {
                 s.Id = Guid.NewGuid().ToString();
             }
+            else
+            {
+                var existingStudent = dbContext.Students.FirstOrDefault(x => x.Id == s.Id);
+                if (existingStudent != null)
+                {
+                    return Conflict("Student with the same Id already exists");
+                }
+            }
+
             dbContext.Add(s);
             dbContext.SaveChanges();
             return Ok(s);
         }
+
 
         [Authorize]
         [HttpPut]
