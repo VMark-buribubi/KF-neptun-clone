@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Teacher } from '../_models/teacher';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-teacher',
@@ -15,6 +16,7 @@ export class UpdateTeacherComponent implements OnInit{
   teacher: Teacher
   snackBar: MatSnackBar
   deleteDisabled: boolean
+  neptunFormControl : FormControl
 
   constructor(http: HttpClient, route: ActivatedRoute, snackBar: MatSnackBar) {
     this.http = http
@@ -22,6 +24,11 @@ export class UpdateTeacherComponent implements OnInit{
     this.teacher = new Teacher()
     this.snackBar = snackBar
     this.deleteDisabled = true
+    this.neptunFormControl = new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(6)
+    ]);
   }
   
   ngOnInit(): void {
@@ -44,6 +51,12 @@ export class UpdateTeacherComponent implements OnInit{
   }
 
   public updateTeacher() : void {
+    if (this.neptunFormControl.invalid) {
+      this.snackBar.open("Invalid Neptun code. Please enter exactly 6 characters.", "Close", { duration: 5000 });
+      return;
+    }
+    this.teacher.neptun = this.neptunFormControl.value;
+
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('token')

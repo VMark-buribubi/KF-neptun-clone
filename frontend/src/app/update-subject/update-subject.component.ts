@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from '../_models/subject';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-subject',
@@ -15,6 +16,7 @@ export class UpdateSubjectComponent implements OnInit{
   subject: Subject
   snackBar: MatSnackBar
   deleteDisabled: boolean
+  neptunFormControl : FormControl
 
   constructor(http: HttpClient, route: ActivatedRoute, snackBar: MatSnackBar) {
     this.http = http
@@ -22,6 +24,11 @@ export class UpdateSubjectComponent implements OnInit{
     this.subject = new Subject()
     this.snackBar = snackBar
     this.deleteDisabled = true
+    this.neptunFormControl = new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.maxLength(6)
+    ]);
   }
 
   ngOnInit(): void {
@@ -46,6 +53,12 @@ export class UpdateSubjectComponent implements OnInit{
 
 
   public updateSubject() : void {
+    if (this.neptunFormControl.invalid) {
+      this.snackBar.open("Invalid Neptun code. Please enter exactly 6 characters.", "Close", { duration: 5000 });
+      return;
+    }
+    this.subject.neptun = this.neptunFormControl.value;
+
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem('token')

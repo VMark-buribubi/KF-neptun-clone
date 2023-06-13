@@ -9,12 +9,12 @@
         Functions
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/list-teachers">List Teachers</button>
-        <button mat-menu-item routerLink="/list-subjects">List Subjects</button>
         <button mat-menu-item routerLink="/list-students">List Students</button>
-        <button mat-menu-item routerLink="/create-teacher" *ngIf="this.api.isLoggedIn()">Create teacher</button>
-        <button mat-menu-item routerLink="/create-subject" *ngIf="this.api.isLoggedIn()">Create subject</button>
+        <button mat-menu-item routerLink="/list-subjects">List Subjects</button>
+        <button mat-menu-item routerLink="/list-teachers">List Teachers</button>
         <button mat-menu-item routerLink="/create-student" *ngIf="this.api.isLoggedIn()">Create student</button>
+        <button mat-menu-item routerLink="/create-subject" *ngIf="this.api.isLoggedIn()">Create subject</button>
+        <button mat-menu-item routerLink="/create-teacher" *ngIf="this.api.isLoggedIn()">Create teacher</button>
         <button mat-menu-item routerLink="/connect-student-to-subject" *ngIf="this.api.isLoggedIn()">Connect student to subject</button>
         <button mat-menu-item routerLink="/connect-subject-to-teacher" *ngIf="this.api.isLoggedIn()">Connect subject to student</button>
         <button mat-menu-item routerLink="/noncrud" *ngIf="this.api.isLoggedIn()">NonCruds</button>
