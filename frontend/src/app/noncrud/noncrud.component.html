@@ -1,9 +1,13 @@
 <h2>Students with Neptun Code</h2>
-<div *ngIf="studentsWithNeptunCode">
-  <ul>
-    <li *ngFor="let student of studentsWithNeptunCode">{{ student.name }} - {{ student.neptun}}</li>
-  </ul>
-</div>
+<mat-card class="example-card" *ngFor="let student of studentsWithNeptunCode">
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title>{{ student.name }}</mat-card-title>
+            <mat-card-subtitle>{{ student.neptun }}</mat-card-subtitle>
+            <img mat-card-sm-image [src]="student.image">
+        </mat-card-title-group>
+    </mat-card-header>
+</mat-card> 
 
 <h2>Students with More Than One Subject</h2>
 <div *ngIf="studentsWithMoreThanOneSubject">
@@ -13,8 +17,13 @@
 </div>
 
 <h2>Exam Subjects with Credit Greater Than {{ credit }}</h2>
-<div *ngIf="examSubjectsWithCredit">
-  <ul>
-    <li *ngFor="let subject of examSubjectsWithCredit">{{ subject.name }}</li>
-  </ul>
-</div>
+<mat-card class="example-card" *ngFor="let subject of examSubjectsWithCredit">
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title>{{ subject.name }}</mat-card-title>
+            <mat-card-subtitle>{{ subject.neptun }}</mat-card-subtitle>
+            <mat-card-subtitle>Credit: {{ subject.credit }}</mat-card-subtitle>
+            <img mat-card-sm-image [src]="subject.image">
+        </mat-card-title-group>
+    </mat-card-header>
+</mat-card>
